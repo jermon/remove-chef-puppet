@@ -1,0 +1,28 @@
+---
+- name: Stop Chef and Puppet
+  service: 
+    name: "{{ item }}"
+    enabled: no
+    state: stopped
+  with_items:
+    - chef-client
+    - puppet
+
+- name: Remove Chef and Puppet
+  apt:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - chef
+    - puppet
+
+- name: Remove /var/log dirs
+  file:
+    path: "/var/log/{{ item }}"
+    state: absent
+  with_items:
+    - chef
+    - puppet
+
+
+
