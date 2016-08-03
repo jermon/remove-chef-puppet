@@ -17,7 +17,7 @@
     - chef
     - puppet
 
- - name: Remove /var/log dirs
+- name: Remove /var/log dirs
   file:
     path: "/var/log/{{ item }}"
     state: absent
@@ -25,5 +25,11 @@
     - chef
     - puppet
 
-
+- name: Remove /etc/init.d/ files
+  file:
+    path: "/etc/init.d/{{ item }}"
+    state: absent
+  with_items:
+    - chef-client
+    - puppet
 
