@@ -12,11 +12,12 @@
   apt:
     name: "{{ item }}"
     state: absent
+    autoremove: yes
   with_items:
     - chef
     - puppet
 
-- name: Remove /var/log dirs
+ - name: Remove /var/log dirs
   file:
     path: "/var/log/{{ item }}"
     state: absent
