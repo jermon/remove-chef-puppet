@@ -25,11 +25,4 @@
     - chef
     - puppet
 
-- name: Remove /etc/init.d/ files
-  file:
-    path: "/etc/init.d/{{ item }}"
-    state: absent
-  with_items:
-    - chef-client
-    - puppet
 
